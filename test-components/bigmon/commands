@@ -1,2 +1,0 @@
-docker build  -f Dockerfile --network host --no-cache --tag wguanicedew/panda-bigmon:0.0.1 .
-wguanicedew/panda-bigmon:0.0.1
