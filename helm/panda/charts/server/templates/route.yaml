@@ -1,0 +1,37 @@
+{{- if .Values.route.enabled -}}
+# for HTTPS
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "server.fullname" . }}-route
+  labels:
+      {{- include "server.labels" . | nindent 4 }}
+
+spec:
+  host: {{ .Values.route.hostName}}
+  to:
+    kind: Service
+    name: {{ include "server.fullname" . }}
+  port:
+    targetPort: https
+  {{- with .Values.route.tls }}
+  tls:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+---
+# for HTTP
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: http-{{ include "server.fullname" . }}-route
+  labels:
+      {{- include "server.labels" . | nindent 4 }}
+
+spec:
+  host: http-{{ .Values.route.hostName}}
+  to:
+    kind: Service
+    name: {{ include "server.fullname" . }}
+  port:
+    targetPort: http
+{{ end }}

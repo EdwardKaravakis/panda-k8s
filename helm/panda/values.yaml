@@ -1,0 +1,77 @@
+# Default values for panda.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+jedi:
+  # enable JEDI
+  enabled: true
+  # container image and tag
+  image:
+    tag: "0.0.31"
+
+  # PV with selector support
+  #persistentvolume:
+  #    selector: false
+
+server:
+  # enable the PanDA server
+  enabled: true
+  # container image and tag
+  image:
+    tag: "0.0.7"
+
+  # PV with selector support
+  #persistentvolume:
+  #    selector: false
+
+  # copy host certs from local
+  #hostcerts:
+  #  enabled: false
+
+  # use Route class to expose the service
+  route:
+    enabled: false
+    # host name of the PanDA server
+    hostName: "FIXME"
+    
+  # use Ingress class to expose the service  
+  ingress:
+    enabled: false
+    hosts:
+      - domain: "FIXME"
+        hostOverride: ""
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: "FIXME"
+        hosts:
+          - domain: "FIXME
+            hostOverride: "FIXME"
+
+  # ID token of the PanDA service account
+  authIdToken: "FIXME"
+
+  # VO (. role) of the ID token
+  authVO: "panda_dev.production"
+
+  # http/s proxy if containers need it to access external services
+  #httpsProxy: "http://proxy.sdcc.bnl.local:3128"
+  #httpProxy: "http://proxy.sdcc.bnl.local:3128"
+
+  # run containers with no-root PID e.g. for OKD
+  #noRoot: true
+
+  # rucio account
+  # rucioAccount: iddsv1
+
+postgres:
+  # enable the database
+  enabled: true
+  # container image and tag
+  image:
+    tag: "0.0.8"
+
+  # PV with selector support
+  #persistentvolume:
+  #    selector: false
