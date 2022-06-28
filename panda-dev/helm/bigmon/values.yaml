@@ -13,10 +13,10 @@ main:
   enabled: true
   replicaCount: 1
   image:
-    repository: wguanicedew/bigmon
+    repository: ekaravak/bigmon
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "0.6.1"
+    tag: "0.0.1"
 
   autoStart: true
 
